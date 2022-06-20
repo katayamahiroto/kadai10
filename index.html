@@ -53,16 +53,18 @@
         // シーンに追加
         //scene.add(directionalLightS);
             
-        /*light = new THREE.PointLight(0xffffff, 3, 0);
+        light = new THREE.PointLight(0xffffff, 3, 0);
         light.position.set(0, 0, 0);
-        scene.add(light);*/
- 
+        scene.add(light);
+          
+         var light = new THREE.RectAreaLight(0xFFFFFF, 5.0, 1000, 1000);
+         scene.add(light);
             
-        var light = new THREE.SpotLight(0xffffff, 5, 200, Math.PI / 20, 0.5);
+        /*var light = new THREE.SpotLight(0xffffff, 5, 200, Math.PI / 20, 0.5);
         light.position.set(0,100, 150);
         // ライトに影を有効にする
         light.castShadow = true;
-        scene.add(light);
+        scene.add(light);*/
 
         // helper
         /*const gridHelper = new THREE.GridHelper(2,10); // size, step
