@@ -175,12 +175,13 @@
         var sphereGeometry8 = new THREE.SphereGeometry( 70, 40, 40 );
         var sphere8 = new THREE.Mesh( sphereGeometry8,mat8);
         sphere8.position.set(200,0,0);
-        var torusgeometry=new THREE.TorusGeometry(100,20,4,8);
+        var torusgeometry=new THREE.TorusGeometry(80,20,4,8);
         var torus = new THREE.Mesh(torusgeometry, mat12);
         torus.position.set(200,0,0);
         /*var saturn=new THREE.Group();
         saturn.add(sphere8);
         saturn.add(torus);*/
+        scene.add(torus);
         scene.add( sphere8);   
             
          //天王星
