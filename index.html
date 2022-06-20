@@ -52,26 +52,10 @@
         directionalLightS.position.set(-1, -1, 1);
         // シーンに追加
         //scene.add(directionalLightS);
-            
-        light = new THREE.PointLight(0xffffff, 3, 0);
-        light.position.set(0, 0, 1000);
-        scene.add(light);
           
          var light = new THREE.RectAreaLight(0xFFFFFF, 5.0, 1000, 1000);
          light.position.set(0, 0, 1000);
          scene.add(light);
-            
-        /*var light = new THREE.SpotLight(0xffffff, 5, 200, Math.PI / 20, 0.5);
-        light.position.set(0,100, 150);
-        // ライトに影を有効にする
-        light.castShadow = true;
-        scene.add(light);*/
-
-        // helper
-        /*const gridHelper = new THREE.GridHelper(2,10); // size, step
-        scene.add(gridHelper);
-        const axisHelper = new THREE.AxisHelper(2); //軸の長さ　X：赤、Y：緑、z：青
-        scene.add(axisHelper);*/
 
         // テクスチャー読み込み
         var textureLoader = new THREE.TextureLoader();  
@@ -95,9 +79,33 @@
         var mat5 = new THREE.MeshPhongMaterial();
         mat5.map = texture5;
             
-       var texture6 = textureLoader.load("tsuki.jpg");
+        var texture6 = textureLoader.load("tsuki.jpg");
         var mat6 = new THREE.MeshPhongMaterial();
         mat6.map = texture6;
+            
+        var texture7 = textureLoader.load("mokusei.jpg");
+        var mat7 = new THREE.MeshPhongMaterial();
+        mat7.map = texture7;
+            
+        var texture8 = textureLoader.load("dosei.jpg");
+        var mat8 = new THREE.MeshPhongMaterial();
+        mat8.map = texture8;
+            
+        var texture9 = textureLoader.load("tenousei.jpg");
+        var mat9 = new THREE.MeshPhongMaterial();
+        mat9.map = texture9;
+            
+        var texture10 = textureLoader.load("kaiousei.jpg");
+        var mat10 = new THREE.MeshPhongMaterial();
+        mat10.map = texture10;
+            
+        var texture11 = textureLoader.load("meiousei.jpg");
+        var mat11 = new THREE.MeshPhongMaterial();
+        mat11.map = texture11;    
+            
+        var texture12 = textureLoader.load("dosei2.jpg");
+        var mat12 = new THREE.MeshPhongMaterial();
+        mat12.map = texture11;      
 
         // グループを作成
         const group = new THREE.Group();
@@ -152,6 +160,41 @@
         var sphere6 = new THREE.Mesh( sphereGeometry6,mat6);
         sphere6.position.set(Math.random() * 500 - 250,Math.random() * 500 - 250,Math.random() * 500 - 250);
         scene.add( sphere6 );
+            
+        //木星
+        var sphereGeometry7 = new THREE.SphereGeometry( 70, 40, 40 );
+        var sphere7 = new THREE.Mesh( sphereGeometry7,mat7);
+        sphere7.position.set(Math.random() * 500 - 250,Math.random() * 500 - 250,Math.random() * 500 - 250);
+        scene.add( sphere7 );   
+         
+        //土星
+        var sphereGeometry8 = new THREE.SphereGeometry( 70, 40, 40 );
+        var sphere8 = new THREE.Mesh( sphereGeometry8,mat8);
+        var torusgeometry=new THREE.TorusGeometry(100,20,4,8);
+        var torus = new THREE.Mesh(torusgeometry, mat12);
+        var saturn=new THREE.Group();
+        saturn.add(sphere8);
+        saturn.add(torus);
+        saturn.position.set(Math.random() * 500 - 250,Math.random() * 500 - 250,Math.random() * 500 - 250);
+        scene.add( saturn );   
+            
+         //天王星
+        var sphereGeometry9 = new THREE.SphereGeometry( 60, 40, 40 );
+        var sphere9 = new THREE.Mesh( sphereGeometry9,mat9);
+        sphere9.position.set(Math.random() * 500 - 250,Math.random() * 500 - 250,Math.random() * 500 - 250);
+        scene.add( sphere9 );    
+            
+         //海王星
+        var sphereGeometry10 = new THREE.SphereGeometry( 60, 40, 40 );
+        var sphere10 = new THREE.Mesh( sphereGeometry10,mat10);
+        sphere10.position.set(Math.random() * 500 - 250,Math.random() * 500 - 250,Math.random() * 500 - 250);
+        scene.add( sphere10 );    
+            
+        //冥王星
+        var sphereGeometry11 = new THREE.SphereGeometry( 10, 40, 40 );
+        var sphere11 = new THREE.Mesh( sphereGeometry11,mat11);
+        sphere11.position.set(Math.random() * 500 - 250,Math.random() * 500 - 250,Math.random() * 500 - 250);
+        scene.add( sphere11 );    
 
         // 光源
         scene.add(new THREE.DirectionalLight(0x222222, 2)); // 平行光源
