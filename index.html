@@ -23,9 +23,6 @@
         var renderer = new THREE.WebGLRenderer();
         document.body.appendChild(renderer.domElement);
         renderer.setSize(width, height);
-        // レンダラー：シャドウを有効にする
-        renderer.shadowMap.enabled = true;
-
 
         // シーンを作成
         const scene = new THREE.Scene();
@@ -56,9 +53,9 @@
         // シーンに追加
         //scene.add(directionalLightS);
             
-        light = new THREE.PointLight(0xffffff, 3, 0);
+        /*light = new THREE.PointLight(0xffffff, 3, 0);
         light.position.set(0, 0, 0);
-        scene.add(light);
+        scene.add(light);*/
  
             
         var light = new THREE.SpotLight(0xffffff, 5, 200, Math.PI / 20, 0.5);
