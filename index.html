@@ -60,7 +60,7 @@
         ambient = new THREE.AmbientLight(0x222222);
         scene.add(ambient);
             
-         var light = new THREE.SpotLight(0xffffff, 5, 200, Math.PI / 20, 0.5);
+        var light = new THREE.SpotLight(0xffffff, 5, 200, Math.PI / 20, 0.5);
         light.position.set(0,100, 150);
         // ライトに影を有効にする
         light.castShadow = true;
@@ -113,8 +113,8 @@
         scene.add( sphere2 );
 
         // 光源
-        //scene.add(new THREE.DirectionalLight(0xff0000, 2)); // 平行光源
-        //scene.add(new THREE.AmbientLight(0x00ffff)); // 環境光源
+        //scene.add(new THREE.DirectionalLight(0x222222, 2)); // 平行光源
+        //scene.add(new THREE.AmbientLight(0x222222)); // 環境光源
 
         // 毎フレーム時に実行されるループイベントです
         tick();
