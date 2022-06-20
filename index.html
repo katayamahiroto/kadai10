@@ -1,0 +1,113 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/three@0.137.4/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.137.4/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+    <h1>大きさの異なるドーナツを作成</h1><br>
+    実現しようとしたこと<br>
+    一部のドーナツをグループ化して回転させる<br>
+    光を当てて影をつけている<br>
+    マウス操作によって拡大縮小や様々な視点から見れるようになる<br>
+    <script>
+        // ページの読み込みを待つ
+        window.addEventListener('DOMContentLoaded', init);
+
+        function init() {
+        // サイズを指定
+        const width = 800
+        const height = 600;
+
+        // レンダラーを作成
+        var renderer = new THREE.WebGLRenderer();
+        document.body.appendChild(renderer.domElement);
+        renderer.setSize(width, height);
+        // レンダラー：シャドウを有効にする
+        renderer.shadowMap.enabled = true;
+
+
+        // シーンを作成
+        const scene = new THREE.Scene();
+
+       
+
+        // フォグを設定
+        // new THREE.Fog(色, 開始距離, 終点距離);
+        scene.fog = new THREE.Fog(0x000000, 50, 2000);
+
+        // カメラを作成
+        const camera = new THREE.PerspectiveCamera(45, width / height);
+        // カメラの初期座標を設定
+        camera.position.set(0, 0, 100);
+
+        // カメラコントローラーを作成
+        const controls = new THREE.OrbitControls(camera, document.body);
+
+        // 平行光源(色、強さ）主光源
+        var directionalLightM = new THREE.DirectionalLight(0xffffff,0.3);
+        directionalLightM.position.set(0, 10, -5);
+        directionalLightM.castShadow = true;
+        //シーンに追加
+        scene.add(directionalLightM);
+
+
+        // 平行光源(色、強さ）補助光源
+        var directionalLightS = new THREE.DirectionalLight(0xffffff,0.3);
+        directionalLightS.position.set(-1, -1, 1);
+        // シーンに追加
+        //scene.add(directionalLightS);
+
+        // helper
+        /*const gridHelper = new THREE.GridHelper(2,10); // size, step
+        scene.add(gridHelper);
+        const axisHelper = new THREE.AxisHelper(2); //軸の長さ　X：赤、Y：緑、z：青
+        scene.add(axisHelper);*/
+
+        // テクスチャー読み込み
+        var textureLoader = new THREE.TextureLoader();  
+        var texture = textureLoader.load("earth.jpg");
+        var mat = new THREE.MeshPhongMaterial();
+       mat.map = texture;
+       
+
+        // グループを作成
+        const group = new THREE.Group();
+        scene.add(group);
+        const geometry=new THREE.TorusGeometry(5,2,4,8);
+        const material=new THREE.MeshPhongMaterial({color:0xffffff});
+
+        for (let i = 0; i < 1000; i++) {
+          const mesh = new THREE.Mesh(geometry, material);
+          mesh.position.x = (Math.random() - 0.5) * 2000;
+          mesh.position.y = (Math.random() - 0.5) * 2000;
+          mesh.position.z = (Math.random() - 0.5) * 2000;
+          mesh.rotation.x = Math.random() * 2 * Math.PI;
+          mesh.rotation.y = Math.random() * 2 * Math.PI;
+          mesh.rotation.z = Math.random() * 2 * Math.PI;
+          // グループに格納する
+          group.add(mesh);
+        }
+
+        var sphereGeometry = new THREE.SphereGeometry( 20, 40, 40 );
+        var sphere = new THREE.Mesh( sphereGeometry,mat);
+        sphere.position.set(0,0,-5);
+        scene.add( sphere );
+
+        // 光源
+        scene.add(new THREE.DirectionalLight(0xff0000, 2)); // 平行光源
+        scene.add(new THREE.AmbientLight(0x00ffff)); // 環境光源
+
+        // 毎フレーム時に実行されるループイベントです
+        tick();
+
+        function tick() {
+          // グループを回す
+          group.rotateY(0.01);
+          renderer.render(scene, camera); // レンダリング
+          requestAnimationFrame(tick);
+        }
+        }
+    </script>
+</body>
+</html>
