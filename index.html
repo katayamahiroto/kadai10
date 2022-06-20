@@ -105,11 +105,11 @@
             
         /*var texture11 = textureLoader.load("meiousei.jpg");
         var mat11 = new THREE.MeshPhongMaterial();
-        mat11.map = texture11;   
+        mat11.map = texture11; */  
             
         var texture12 = textureLoader.load("dosei2.jpg");
         var mat12 = new THREE.MeshPhongMaterial();
-        mat12.map = texture11;      */
+        mat12.map = texture12;      
 
         // グループを作成
         const group = new THREE.Group();
@@ -175,10 +175,10 @@
         var sphereGeometry8 = new THREE.SphereGeometry( 70, 40, 40 );
         var sphere8 = new THREE.Mesh( sphereGeometry8,mat8);
         sphere8.position.set(200,0,0);
-        /*var torusgeometry=new THREE.TorusGeometry(100,20,4,8);
+        var torusgeometry=new THREE.TorusGeometry(100,20,4,8);
         var torus = new THREE.Mesh(torusgeometry, mat12);
         torus.position.set(200,0,0);
-        var saturn=new THREE.Group();
+        /*var saturn=new THREE.Group();
         saturn.add(sphere8);
         saturn.add(torus);*/
         scene.add( sphere8);   
