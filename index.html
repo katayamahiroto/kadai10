@@ -54,10 +54,11 @@
         //scene.add(directionalLightS);
             
         light = new THREE.PointLight(0xffffff, 3, 0);
-        light.position.set(0, 0, 0);
+        light.position.set(0, 0, 1000);
         scene.add(light);
           
          var light = new THREE.RectAreaLight(0xFFFFFF, 5.0, 1000, 1000);
+         light.position.set(0, 0, 1000);
          scene.add(light);
             
         /*var light = new THREE.SpotLight(0xffffff, 5, 200, Math.PI / 20, 0.5);
