@@ -99,9 +99,9 @@
         var mat10 = new THREE.MeshPhongMaterial();
         mat10.map = texture10;
             
-        var texture11 = textureLoader.load("meiousei.jpg");
+        /*var texture11 = textureLoader.load("meiousei.jpg");
         var mat11 = new THREE.MeshPhongMaterial();
-        mat11.map = texture11;    
+        mat11.map = texture11;   */ 
             
         var texture12 = textureLoader.load("dosei2.jpg");
         var mat12 = new THREE.MeshPhongMaterial();
@@ -191,10 +191,10 @@
         scene.add( sphere10 );    
             
         //冥王星
-        var sphereGeometry11 = new THREE.SphereGeometry( 10, 40, 40 );
+        /*var sphereGeometry11 = new THREE.SphereGeometry( 10, 40, 40 );
         var sphere11 = new THREE.Mesh( sphereGeometry11,mat11);
         sphere11.position.set(Math.random() * 500 - 250,Math.random() * 500 - 250,Math.random() * 500 - 250);
-        scene.add( sphere11 );    
+        scene.add( sphere11 );    */
 
         // 光源
         scene.add(new THREE.DirectionalLight(0x222222, 2)); // 平行光源
