@@ -23,8 +23,6 @@
         var renderer = new THREE.WebGLRenderer();
         document.body.appendChild(renderer.domElement);
         renderer.setSize(width, height);
-            
-        renderer.setClearColor(0xffffdd);
 
         // シーンを作成
         const scene = new THREE.Scene();
@@ -111,7 +109,13 @@
             
         var texture12 = textureLoader.load("dosei2.png");
         var mat12 = new THREE.MeshPhongMaterial();
-        mat12.map = texture12;      
+        mat12.map = texture12;
+            
+        var texture13 = textureLoader.load("utyu.jpg");
+        var mat13 = new THREE.MeshPhongMaterial();
+        mat13.map = texture13;    
+            
+         renderer.setClearColor(mat13);
 
         // グループを作成
         const group = new THREE.Group();
