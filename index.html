@@ -236,6 +236,13 @@
           group.rotateY(0.01);
           saturn.rotation.y += 0.004; // 追加：土星を回転させる
           uranus.rotation.y += 0.005; // 追加：天王星を回転させる
+            
+          theta += 0.1; // 追加
+          camera.position.x = Math.cos(THREE.Math.degToRad(theta)) * 300; // 追加
+          camera.position.z = Math.sin(THREE.Math.degToRad(theta)) * 300; // 追加
+          camera.lookAt(scene.position); // 追加
+          controls.update();
+            
           renderer.render(scene, camera); // レンダリング
           requestAnimationFrame(update);
         }
