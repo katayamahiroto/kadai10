@@ -55,7 +55,11 @@
           
          light = new THREE.PointLight(0xffffff, 3, 0);
          light.position.set(0, 0, 1000);
-         scene.add(light);     
+         scene.add(light); 
+            
+         light2 = new THREE.PointLight(0xffffff, 3, 0);
+         light2.position.set(0, 0, -1000);
+         scene.add(light2); 
 
         // テクスチャー読み込み
         var textureLoader = new THREE.TextureLoader();  
