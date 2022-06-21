@@ -175,7 +175,7 @@
         var sphereGeometry8 = new THREE.SphereGeometry( 70, 40, 40 );
         var sphere8 = new THREE.Mesh( sphereGeometry8,mat8);
         sphere8.position.set(200,0,0);
-        var torusgeometry=new THREE.TorusGeometry(90,10,4,50);
+        var torusgeometry=new THREE.TorusGeometry(90,10,2.5,50);
         var torus = new THREE.Mesh(torusgeometry, mat12);
         torus.position.set(200,0,0);
         torus.rotation.set(Math.PI/2,0,0);
@@ -215,7 +215,17 @@
         function tick() {
           // グループを回す
           group.rotateY(0.01);
-          
+          sphere2.rotation.y += 0.001; // 追加：太陽を回転させる
+          sphere3.rotation.y += 0.005; // 追加：水星を回転させる
+          sphere4.rotation.y += 0.0010; // 追加：金星を回転させる
+          sphere.rotation.y += 0.0005; // 追加：地球を回転させる
+          sphere6.rotation.y += 0.0010; // 追加：雲を回転させる
+          sphere5.rotation.y += 0.002; // 追加：火星を回転させる
+          sphere7.rotation.y += 0.003; // 追加：木星を回転させる
+          saturn.rotation.y += 0.004; // 追加：土星を回転させる
+          sphere9.rotation.y += 0.005; // 追加：天王星を回転させる
+          //pluto.rotation.y += 0.006; // 追加：冥王星を回転させる
+          sphere10.rotation.y += 0.007; // 追加：海王星を回転させる
           renderer.render(scene, camera); // レンダリング
           requestAnimationFrame(tick);
         }
