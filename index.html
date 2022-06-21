@@ -29,12 +29,12 @@
 
         // フォグを設定
         // new THREE.Fog(色, 開始距離, 終点距離);
-        scene.fog = new THREE.Fog(0x000000, 50, 2000);
+        scene.fog = new THREE.Fog(0x000000, 50, 1500);
 
         // カメラを作成
         const camera = new THREE.PerspectiveCamera(45, width / height);
         // カメラの初期座標を設定
-        camera.position.set(0, 10, 2000);
+        camera.position.set(0, 30, 1500);
 
         // カメラコントローラーを作成
         const controls = new THREE.OrbitControls(camera, document.body);
@@ -244,6 +244,7 @@
           uranus.rotation.y += 0.005; // 追加：天王星を回転させる
           sphere10.rotation.y += 0.007; // 追加：海王星を回転させる
           sphere11.rotation.y += 0.006; // 追加：冥王星を回転させる
+          planet.rotation.y +=0.01;
           renderer.render(scene, camera); // レンダリング
           requestAnimationFrame(tick);
         }
