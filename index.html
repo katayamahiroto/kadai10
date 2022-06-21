@@ -177,14 +177,13 @@
         sphere8.position.set(200,0,0);
         var torusgeometry=new THREE.TorusGeometry(80,10,2,50);
         var torus = new THREE.Mesh(torusgeometry, mat12);
-        torus.scale.z = 1.0;
         torus.position.set(200,0,0);
         torus.rotation.set(Math.PI/2,0,0);
         /*var saturn=new THREE.Group();
         saturn.add(sphere8);
-        saturn.add(torus);*/
+        saturn.add(torus);
         scene.add(torus);
-        scene.add( sphere8);   
+        scene.add( sphere8);   */
             
          //天王星
         var sphereGeometry9 = new THREE.SphereGeometry( 60, 40, 40 );
@@ -203,6 +202,13 @@
         var sphere11 = new THREE.Mesh( sphereGeometry11,mat11);
         sphere11.position.set(Math.random() * 500 - 250,Math.random() * 500 - 250,Math.random() * 500 - 250);
         scene.add( sphere11 );    */
+            
+        const saturn=new THREE.Group();
+        saturn.add(sphere8);
+        saturn.add(torus);
+        saturn.position.set(0,0,0);
+        scene.add(saturn);
+            
 
         // 光源
         scene.add(new THREE.DirectionalLight(0x222222, 2)); // 平行光源
