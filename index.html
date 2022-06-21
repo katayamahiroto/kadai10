@@ -23,6 +23,8 @@
         var renderer = new THREE.WebGLRenderer();
         document.body.appendChild(renderer.domElement);
         renderer.setSize(width, height);
+            
+        renderer.setClearColor(0xffffdd);
 
         // シーンを作成
         const scene = new THREE.Scene();
