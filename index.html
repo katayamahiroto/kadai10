@@ -103,9 +103,9 @@
         var mat10 = new THREE.MeshPhongMaterial();
         mat10.map = texture10;
             
-        /*var texture11 = textureLoader.load("meiousei.jpg");
+        var texture11 = textureLoader.load("meiousei.jpg");
         var mat11 = new THREE.MeshPhongMaterial();
-        mat11.map = texture11; */  
+        mat11.map = texture11; 
             
         var texture12 = textureLoader.load("dosei2.png");
         var mat12 = new THREE.MeshPhongMaterial();
@@ -183,8 +183,12 @@
          //天王星
         var sphereGeometry9 = new THREE.SphereGeometry( 60, 40, 40 );
         var sphere9 = new THREE.Mesh( sphereGeometry9,mat9);
-        sphere9.position.set(Math.random() * 500 - 250,Math.random() * 500 - 250,Math.random() * 500 - 250);
-        scene.add( sphere9 );    
+        sphere9.position.set(300,0,0);
+        var torusgeometry2=new THREE.TorusGeometry(80,10,2.5,50);
+        var torus2 = new THREE.Mesh(torusgeometry2, mat9);
+        torus.position.set(300,0,0);
+        torus.rotation.set(Math.PI/2,0,0);
+        
             
          //海王星
         var sphereGeometry10 = new THREE.SphereGeometry( 60, 40, 40 );
@@ -193,16 +197,22 @@
         scene.add( sphere10 );    
             
         //冥王星
-        /*var sphereGeometry11 = new THREE.SphereGeometry( 10, 40, 40 );
+        var sphereGeometry11 = new THREE.SphereGeometry( 10, 40, 40 );
         var sphere11 = new THREE.Mesh( sphereGeometry11,mat11);
         sphere11.position.set(Math.random() * 500 - 250,Math.random() * 500 - 250,Math.random() * 500 - 250);
-        scene.add( sphere11 );    */
+        scene.add( sphere11 );    
             
         const saturn=new THREE.Group();
         saturn.add(sphere8);
         saturn.add(torus);
         saturn.position.set(0,0,0);
         scene.add(saturn);
+            
+        const uranus=new THREE.Group();
+        uranus.add(sphere9);
+        uranus.add(torus2);
+        uranus.position.set(0,0,0);
+        scene.add(uranus);
             
 
         // 光源
@@ -215,17 +225,17 @@
         function tick() {
           // グループを回す
           group.rotateY(0.01);
+          sphere.rotation.y += 0.0005; // 追加：地球を回転させる
           sphere2.rotation.y += 0.001; // 追加：太陽を回転させる
           sphere3.rotation.y += 0.005; // 追加：水星を回転させる
           sphere4.rotation.y += 0.0010; // 追加：金星を回転させる
-          sphere.rotation.y += 0.0005; // 追加：地球を回転させる
-          sphere6.rotation.y += 0.0010; // 追加：雲を回転させる
           sphere5.rotation.y += 0.002; // 追加：火星を回転させる
+          sphere6.rotation.y += 0.0010; // 追加：雲を回転させる
           sphere7.rotation.y += 0.003; // 追加：木星を回転させる
           saturn.rotation.y += 0.004; // 追加：土星を回転させる
-          sphere9.rotation.y += 0.005; // 追加：天王星を回転させる
-          //pluto.rotation.y += 0.006; // 追加：冥王星を回転させる
+          uranus.rotation.y += 0.005; // 追加：天王星を回転させる
           sphere10.rotation.y += 0.007; // 追加：海王星を回転させる
+          sphere11.rotation.y += 0.006; // 追加：冥王星を回転させる
           renderer.render(scene, camera); // レンダリング
           requestAnimationFrame(tick);
         }
