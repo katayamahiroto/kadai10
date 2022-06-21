@@ -40,11 +40,11 @@
         const controls = new THREE.OrbitControls(camera, document.body);
 
         // 平行光源(色、強さ）主光源
-        /*var directionalLightM = new THREE.DirectionalLight(0xffffff,0.3);
+        var directionalLightM = new THREE.DirectionalLight(0xffffff,0.3);
         directionalLightM.position.set(0, 10, -5);
         directionalLightM.castShadow = true;
         //シーンに追加
-        scene.add(directionalLightM);*/
+        scene.add(directionalLightM);
 
 
         // 平行光源(色、強さ）補助光源
@@ -53,8 +53,7 @@
         // シーンに追加
         scene.add(directionalLightS);
           
-         light =new THREE.DirectionalLight(0xFFFFFF, 50);
-         //light = new THREE.PointLight(0xffffff, 3, 0);
+         light = new THREE.PointLight(0xffffff, 3, 0);
          light.position.set(0, 0, 1000);
          scene.add(light);     
 
