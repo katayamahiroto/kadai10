@@ -53,13 +53,29 @@
         // シーンに追加
         scene.add(directionalLightS);
           
-         light = new THREE.PointLight(0xffffff, 3, 0);
-         light.position.set(0, 500, 1000);
+         light = new THREE.PointLight(0xffffff, 3, 1.0);
+         light.position.set(0, 0, 1000);
          scene.add(light); 
             
-         light2 = new THREE.PointLight(0xffffff, 3, 0);
-         light2.position.set(0, -500, -1000);
+         light2 = new THREE.PointLight(0xffffff, 3, 1.0);
+         light2.position.set(0, 0, -1000);
          scene.add(light2); 
+            
+         light3 = new THREE.PointLight(0xffffff, 3, 1.0);
+         light3.position.set(0, 500, 0);
+         scene.add(light3);
+            
+         light4 = new THREE.PointLight(0xffffff, 3, 1.0);
+         light4.position.set(0, -500, 0);
+         scene.add(light4);
+            
+         light5 = new THREE.PointLight(0xffffff, 3, 1.0);
+         light5.position.set(1000, 0, 0);
+         scene.add(light5);
+            
+         light6 = new THREE.PointLight(0xffffff, 3, 1.0);
+         light6.position.set(-1000, 0, 0);
+         scene.add(light6);
 
         // テクスチャー読み込み
         var textureLoader = new THREE.TextureLoader();  
