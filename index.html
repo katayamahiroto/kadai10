@@ -34,7 +34,7 @@
         // カメラを作成
         const camera = new THREE.PerspectiveCamera(45, width / height);
         // カメラの初期座標を設定
-        camera.position.set(0, 30, 1500);
+        camera.position.set(0, 30, 1000);
 
         // カメラコントローラーを作成
         const controls = new THREE.OrbitControls(camera, document.body);
@@ -129,7 +129,7 @@
         var sphereGeometry = new THREE.SphereGeometry( 40, 40, 40 );
         var sphere = new THREE.Mesh( sphereGeometry,mat);
         sphere.position.set(350,0,0);
-        //scene.add( sphere );
+        scene.add( sphere );
             
         //太陽
         var sphereGeometry2 = new THREE.SphereGeometry( 100, 40, 40 );
@@ -141,31 +141,31 @@
         var sphereGeometry3 = new THREE.SphereGeometry( 10, 40, 40 );
         var sphere3 = new THREE.Mesh( sphereGeometry3,mat3);
         sphere3.position.set(150,0,0);
-        //scene.add( sphere3 );
+        scene.add( sphere3 );
             
         //金星
         var sphereGeometry4 = new THREE.SphereGeometry( 30, 40, 40 );
         var sphere4 = new THREE.Mesh( sphereGeometry4,mat4);
         sphere4.position.set(250,0,0);
-        //scene.add( sphere4 );
+        scene.add( sphere4 );
             
         //火星
         var sphereGeometry5 = new THREE.SphereGeometry( 30, 40, 40 );
         var sphere5 = new THREE.Mesh( sphereGeometry5,mat5);
         sphere5.position.set(450,0,0);
-        //scene.add( sphere5 );
+        scene.add( sphere5 );
             
          //月
         var sphereGeometry6 = new THREE.SphereGeometry( 5, 40, 40 );
         var sphere6 = new THREE.Mesh( sphereGeometry6,mat6);
         sphere6.position.set(175,0,-30);
-        //scene.add( sphere6 );
+        scene.add( sphere6 );
             
         //木星
         var sphereGeometry7 = new THREE.SphereGeometry( 70, 40, 40 );
         var sphere7 = new THREE.Mesh( sphereGeometry7,mat7);
         sphere7.position.set(550,0,0);
-        //scene.add( sphere7 );   
+        scene.add( sphere7 );   
          
         //土星
         var sphereGeometry8 = new THREE.SphereGeometry( 70, 40, 40 );
@@ -190,13 +190,13 @@
         var sphereGeometry10 = new THREE.SphereGeometry( 60, 40, 40 );
         var sphere10 = new THREE.Mesh( sphereGeometry10,mat10);
         sphere10.position.set(950,0,0);
-        //scene.add( sphere10 );    
+        scene.add( sphere10 );    
             
         //冥王星
         var sphereGeometry11 = new THREE.SphereGeometry( 10, 40, 40 );
         var sphere11 = new THREE.Mesh( sphereGeometry11,mat11);
         sphere11.position.set(1000,0,0);
-        //scene.add( sphere11 );    
+        scene.add( sphere11 );    
             
         const saturn=new THREE.Group();
         saturn.add(sphere8);
@@ -210,7 +210,7 @@
         uranus.position.set(0,0,0);
         scene.add(uranus);
             
-        const planet=new THREE.Group();
+        /*const planet=new THREE.Group();
         planet.add(sphere);
         planet.add(sphere3);
         planet.add(sphere4);
@@ -220,7 +220,7 @@
         planet.add(sphere10);
         planet.add(sphere11);
         planet.position.set(0,0,0);
-        scene.add(planet);    
+        scene.add(planet);    */
             
 
         // 光源
@@ -228,23 +228,33 @@
         scene.add(new THREE.AmbientLight(0x222222)); // 環境光源
 
         // 毎フレーム時に実行されるループイベントです
-        tick();
-
-        function tick() {
-          // グループを回す
-          group.rotateY(0.01);
-          sphere.rotation.y += 0.0005; // 追加：地球を回転させる
+        update();
+            
+         sphere.rotation.y += 0.0005; // 追加：地球を回転させる
           sphere2.rotation.y += 0.001; // 追加：太陽を回転させる
           sphere3.rotation.y += 0.005; // 追加：水星を回転させる
           sphere4.rotation.y += 0.0010; // 追加：金星を回転させる
           sphere5.rotation.y += 0.002; // 追加：火星を回転させる
           sphere6.rotation.y += 0.0010; // 追加：雲を回転させる
-          sphere7.rotation.y += 0.003; // 追加：木星を回転させる
+          sphere7.rotation.y += 0.003; // 追加：木星を回転させる   
+            sphere10.rotation.y += 0.007; // 追加：海王星を回転させる
+          sphere11.rotation.y += 0.006; // 追加：冥王星を回転させる
+
+        function update() {
+          // グループを回す
+          group.rotateY(0.01);
+          /*sphere.rotation.y += 0.0005; // 追加：地球を回転させる
+          sphere2.rotation.y += 0.001; // 追加：太陽を回転させる
+          sphere3.rotation.y += 0.005; // 追加：水星を回転させる
+          sphere4.rotation.y += 0.0010; // 追加：金星を回転させる
+          sphere5.rotation.y += 0.002; // 追加：火星を回転させる
+          sphere6.rotation.y += 0.0010; // 追加：雲を回転させる
+          sphere7.rotation.y += 0.003; // 追加：木星を回転させる*/
           saturn.rotation.y += 0.004; // 追加：土星を回転させる
           uranus.rotation.y += 0.005; // 追加：天王星を回転させる
-          sphere10.rotation.y += 0.007; // 追加：海王星を回転させる
-          sphere11.rotation.y += 0.006; // 追加：冥王星を回転させる
-          planet.rotation.y +=0.01;
+          /*sphere10.rotation.y += 0.007; // 追加：海王星を回転させる
+          sphere11.rotation.y += 0.006; // 追加：冥王星を回転させる*/
+          //planet.rotation.y +=0.01;
           renderer.render(scene, camera); // レンダリング
           requestAnimationFrame(tick);
         }
