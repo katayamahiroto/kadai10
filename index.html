@@ -136,12 +136,15 @@
         scene.add(group);
         const geometry=new THREE.TorusGeometry(3,1,4,8);
         const material=new THREE.MeshPhongMaterial({color:0xffffff});
-        const geometry2 = new THREE.SphereGeometry( 1, 32, 32 );
-        const material2 = new THREE.MeshBasicMaterial( {color: 0xFF0000} );
+        const geometry2 = new THREE.SphereGeometry( 2, 32, 32 );
+        const material2 = new THREE.MeshBasicMaterial( {color: 0xffffff} );
+        const geometry3 = new THREE.BoxGeometry( 0.5, 0.5, 0.5 );
+        const material3 = new THREE.MeshBasicMaterial( {color: 0xffffff} );
 
         for (let i = 0; i < 1000; i++) {
           const mesh = new THREE.Mesh(geometry, material);
           const sphere = new THREE.Mesh( geometry2, material2 );
+          const cube = new THREE.Mesh( geometry3, material3 );
           mesh.position.x = (Math.random() - 0.5) * 2000;
           mesh.position.y = (Math.random() - 0.5) * 2000;
           mesh.position.z = (Math.random() - 0.5) * 2000;
@@ -154,9 +157,16 @@
           sphere.rotation.x = Math.random() * 2 * Math.PI;
           sphere.rotation.y = Math.random() * 2 * Math.PI;
           sphere.rotation.z = Math.random() * 2 * Math.PI;
+          cube.position.x = (Math.random() - 0.5) * 2000;
+          cube.position.y = (Math.random() - 0.5) * 2000;
+          cube.position.z = (Math.random() - 0.5) * 2000;
+          cube.rotation.x = Math.random() * 2 * Math.PI;
+          cube.rotation.y = Math.random() * 2 * Math.PI;
+          cube.rotation.z = Math.random() * 2 * Math.PI;
           // グループに格納する
           group.add(mesh);
           group.add(sphere);
+          group.add(cube);
         }
 
         //地球
@@ -294,7 +304,7 @@
 
         function update() {
             // グループを回す
-          group.rotateY(0.01);
+          group.rotateY(0.0007);
           earth.rotation.y += 0.0005; // 地球を回転させる
           sphere2.rotation.y += 0.001; // 太陽を回転させる
           mercury.rotation.y += 0.005; // 水星を回転させる
