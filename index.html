@@ -78,9 +78,13 @@
          light6.position.set(-1000, 0, 0);
          scene.add(light6);*/
             
-         var light=new THREE.SpotLight(0xffffff,3,1000,Math.PI/2,10,0.2);
+         var light=new THREE.SpotLight(0xffffff,2,1000,Math.PI/2,10,0.2);
          light.position.set(0,50,500);
          scene.add(light);
+            
+         var light2=new THREE.SpotLight(0xffffff,2,1000,Math.PI/2,10,0.2);
+         light2.position.set(0,50,-500);
+         scene.add(light2);
 
         // テクスチャー読み込み
         var textureLoader = new THREE.TextureLoader();  
