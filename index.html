@@ -76,6 +76,14 @@
          light4.position.set(0,-1000,0);
          scene.add(light4);
             
+         var light5=new THREE.SpotLight(0xffffff,1,1000,Math.PI/2,10,0.2);
+         light5.position.set(1000,0,0);
+         scene.add(light5);
+            
+         var light6=new THREE.SpotLight(0xffffff,1,1000,Math.PI/2,10,0.2);
+         light6.position.set(-1000,0,0);
+         scene.add(light6);
+            
          // テクスチャー読み込み
         var textureLoader = new THREE.TextureLoader();  
         var texture = textureLoader.load("earth1.jpg");
