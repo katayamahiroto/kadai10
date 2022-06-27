@@ -44,42 +44,17 @@
         const controls = new THREE.OrbitControls(camera, document.body);
 
         // 平行光源(色、強さ）主光源
-        var directionalLightM = new THREE.DirectionalLight(0xffffff,0.3);
-        directionalLightM.position.set(0, 10, -5);
-        directionalLightM.castShadow = true;
+        var directionalLight = new THREE.DirectionalLight(0xffffff,0.3);
+        directionalLight.position.set(0, 10, -5);
         //シーンに追加
-        scene.add(directionalLightM);
+        scene.add(directionalLight);
 
 
         // 平行光源(色、強さ）補助光源
-        var directionalLightS = new THREE.DirectionalLight(0xffffff,0.3);
-        directionalLightS.position.set(-1, -1, 1);
+        var directionalLight2 = new THREE.DirectionalLight(0xffffff,0.3);
+        directionalLight2.position.set(-1, -1, 1);
         // シーンに追加
-        scene.add(directionalLightS);
-          
-         /*light = new THREE.PointLight(0xffffff, 3, 0);
-         light.position.set(0, 0, 1000);
-         scene.add(light); 
-            
-         light2 = new THREE.PointLight(0xffffff, 3, 0);
-         light2.position.set(0, 0, -1000);
-         scene.add(light2); 
-            
-         light3 = new THREE.PointLight(0xffffff, 3, 0);
-         light3.position.set(0, 500, 0);
-         scene.add(light3);
-            
-         light4 = new THREE.PointLight(0xffffff, 3, 0);
-         light4.position.set(0, -500, 0);
-         scene.add(light4);
-            
-         light5 = new THREE.PointLight(0xffffff, 3, 0);
-         light5.position.set(1000, 0, 0);
-         scene.add(light5);
-            
-         light6 = new THREE.PointLight(0xffffff, 3, 0);
-         light6.position.set(-1000, 0, 0);
-         scene.add(light6);*/
+        scene.add(directionalLight2);
             
          var light=new THREE.SpotLight(0xffffff,2,1000,Math.PI/2,10,0.2);
          light.position.set(0,50,500);
@@ -139,10 +114,6 @@
         var mat12 = new THREE.MeshPhongMaterial();
         mat12.map = texture12;
             
-        var texture13 = textureLoader.load("utyu.jpg");
-        var mat13 = new THREE.MeshPhongMaterial();
-        mat13.map = texture13;
-            
         let bgTexture = new THREE.TextureLoader().load("utyu.jpg");
         scene.background = bgTexture;
 
@@ -150,16 +121,16 @@
         const group = new THREE.Group();
         scene.add(group);
         const geometry=new THREE.TorusGeometry(3,1,4,8);
-        //const material=new THREE.MeshPhongMaterial({color:0xffffff});
+        const material=new THREE.MeshPhongMaterial({color:0xffffff});
         const geometry2 = new THREE.SphereGeometry( 2, 32, 32 );
-        //const material2 = new THREE.MeshBasicMaterial( {color: 0xffffff} );
+        const material2 = new THREE.MeshBasicMaterial( {color: 0xffffff} );
         const geometry3 = new THREE.BoxGeometry( 5, 5, 5 );
-        //const material3 = new THREE.MeshBasicMaterial( {color: 0xffffff} );
+        const material3 = new THREE.MeshBasicMaterial( {color: 0xffffff} );
 
         for (let i = 0; i < 1000; i++) {
-          const mesh = new THREE.Mesh(geometry, mat13);
-          const sphere = new THREE.Mesh( geometry2, mat13 );
-          const cube = new THREE.Mesh( geometry3, mat13 );
+          const mesh = new THREE.Mesh(geometry, material);
+          const sphere = new THREE.Mesh( geometry2, material2 );
+          const cube = new THREE.Mesh( geometry3, material3 );
           mesh.position.x = (Math.random() - 0.5) * 2000;
           mesh.position.y = (Math.random() - 0.5) * 2000;
           mesh.position.z = (Math.random() - 0.5) * 2000;
