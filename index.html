@@ -10,6 +10,7 @@
     宇宙を作るために太陽系の惑星を作成<br>
     それぞれの惑星のテクスチャを貼って惑星を再現<br>
     太陽を基準に惑星が回っている　回るスピードも惑星ごとに違う<br>
+    惑星を回転させる処理と回る処理を分けて表現している<br>
     背景にも宇宙のテクスチャを貼り再現している<br>
     球とドーナツと立方体をランダムに表示させ星のように用いている。<br>
     フォグを用いて遠い距離に表示されているものをぼかして表現している。<br>
@@ -56,19 +57,23 @@
         // シーンに追加
         scene.add(directionalLight2);
             
-         var light=new THREE.SpotLight(0xffffff,2,1000,Math.PI/2,10,0.2);
+        // 光源
+        //scene.add(new THREE.DirectionalLight(0x222222, 2)); // 平行光源
+        scene.add(new THREE.AmbientLight(0x222222)); // 環境光源
+            
+         var light=new THREE.SpotLight(0xffffff,1,1000,Math.PI/2,10,0.2);
          light.position.set(0,0,500);
          scene.add(light);
             
-         var light2=new THREE.SpotLight(0xffffff,2,1000,Math.PI/2,10,0.2);
+         var light2=new THREE.SpotLight(0xffffff,1,1000,Math.PI/2,10,0.2);
          light2.position.set(0,0,-500);
          scene.add(light2);
             
-         var light3=new THREE.SpotLight(0xffffff,2,1000,Math.PI/2,10,0.2);
+         var light3=new THREE.SpotLight(0xffffff,1,1000,Math.PI/2,10,0.2);
          light3.position.set(0,100,0);
          scene.add(light3);
             
-         var light4=new THREE.SpotLight(0xffffff,2,1000,Math.PI/2,10,0.2);
+         var light4=new THREE.SpotLight(0xffffff,1,1000,Math.PI/2,10,0.2);
          light4.position.set(0,-100,0);
          scene.add(light4);
             
@@ -167,7 +172,6 @@
         var sphereGeometry = new THREE.SphereGeometry( 40, 40, 40 );
         var sphere = new THREE.Mesh( sphereGeometry,mat);
         sphere.position.set(350,0,0);
-        //scene.add( sphere );
             
         //太陽
         var sphereGeometry2 = new THREE.SphereGeometry( 100, 40, 40 );
@@ -179,14 +183,12 @@
         var sphereGeometry3 = new THREE.SphereGeometry( 10, 40, 40 );
         var sphere3 = new THREE.Mesh( sphereGeometry3,mat3);
         sphere3.position.set(150,0,0);
-        //scene.add( sphere3 );
-            
+             
         //金星
         var sphereGeometry4 = new THREE.SphereGeometry( 30, 40, 40 );
         var sphere4 = new THREE.Mesh( sphereGeometry4,mat4);
         sphere4.position.set(250,0,0);
-        //scene.add( sphere4 );
-            
+           
         //火星
         var sphereGeometry5 = new THREE.SphereGeometry( 30, 40, 40 );
         var sphere5 = new THREE.Mesh( sphereGeometry5,mat5);
@@ -197,14 +199,12 @@
         var sphereGeometry6 = new THREE.SphereGeometry( 5, 40, 40 );
         var sphere6 = new THREE.Mesh( sphereGeometry6,mat6);
         sphere6.position.set(175,0,-30);
-        //scene.add( sphere6 );
-            
+           
         //木星
         var sphereGeometry7 = new THREE.SphereGeometry( 70, 40, 40 );
         var sphere7 = new THREE.Mesh( sphereGeometry7,mat7);
         sphere7.position.set(550,0,0);
-        //scene.add( sphere7 );   
-         
+        
         //土星
         var sphereGeometry8 = new THREE.SphereGeometry( 70, 40, 40 );
         var sphere8 = new THREE.Mesh( sphereGeometry8,mat8);
@@ -222,20 +222,17 @@
         var torus2 = new THREE.Mesh(torusgeometry2, mat9);
         torus2.position.set(900,0,0);
         torus2.rotation.set(Math.PI/2,0,0);
-        
-            
+                   
          //海王星
         var sphereGeometry10 = new THREE.SphereGeometry( 60, 40, 40 );
         var sphere10 = new THREE.Mesh( sphereGeometry10,mat10);
         sphere10.position.set(950,0,0);
-        //scene.add( sphere10 );    
-            
+       
         //冥王星
         var sphereGeometry11 = new THREE.SphereGeometry( 10, 40, 40 );
         var sphere11 = new THREE.Mesh( sphereGeometry11,mat11);
         sphere11.position.set(990,0,0);
-        //scene.add( sphere11 );    
-          
+        
         const earth=new THREE.Group();
         earth.add(sphere);
         earth.position.set(0,0,0);
@@ -287,11 +284,7 @@
         pluto.add(sphere11);
         pluto.position.set(0,0,0);
         scene.add(pluto);
-            
-        // 光源
-        scene.add(new THREE.DirectionalLight(0x222222, 2)); // 平行光源
-        scene.add(new THREE.AmbientLight(0x222222)); // 環境光源
-
+        
         // 毎フレーム時に実行されるループイベントです
         update();
          
@@ -305,15 +298,15 @@
           sphere2.rotation.y += 0.002; // 太陽を回転させる
           mercury.rotation.y += 0.005; // 水星を回す
           sphere3.rotation.y +=0.002;  // 水星を回転させる
-          venus.rotation.y += 0.0010; // 金星を回す
+          venus.rotation.y += 0.001; // 金星を回す
           sphere4.rotation.y +=0.002;  // 金星を回転させる
           mars.rotation.y += 0.002; // 火星を回す
           sphere5.rotation.y +=0.002;　// 火星を回転させる
-          moon.rotation.y += 0.0010; // 月を回す
+          moon.rotation.y += 0.001; // 月を回す
           sphere6.rotation.y +=0.002;// 月を回転させる
           jupiter.rotation.y += 0.003; // 木星を回す
           sphere7.rotation.y +=0.002;　// 木星を回転させる
-          neptune.rotation.y += 0.007; // 海王星を回す
+          neptune.rotation.y += 0.004; // 海王星を回す
           sphere10.rotation.y +=0.002;　// 海王星を回転させる
           pluto.rotation.y += 0.006; // 冥王星を回す
           sphere11.rotation.y +=0.002;// 冥王星を回転させる
