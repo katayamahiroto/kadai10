@@ -63,15 +63,11 @@
         //scene.add(new THREE.AmbientLight(0x222222)); 
             
          var ambientLight2 = new THREE.AmbientLight(0x222222,2);
-        //ambientLight2.position.set(-1, -1, 1);
+        //ambientLight2.position.set(0, 0, 0);
         // シーンに追加
         scene.add(ambientLight2);
             
-         var light = new THREE.PointLight(0xffffff, 3, 50, 0.2);
-         light.position.set(0,200,0);
-         scene.add(light);
-            
-         /*var light=new THREE.SpotLight(0xffffff,1,1000,Math.PI/2,10,0.2);
+         var light=new THREE.SpotLight(0xffffff,1,1000,Math.PI/2,10,0.2);
          light.position.set(0,0,1000);
          scene.add(light);
             
@@ -93,7 +89,7 @@
             
          var light6=new THREE.SpotLight(0xffffff,1,1000,Math.PI/2,10,0.2);
          light6.position.set(-1000,0,0);
-         scene.add(light6);*/
+         scene.add(light6);
             
          // テクスチャー読み込み
         var textureLoader = new THREE.TextureLoader();  
