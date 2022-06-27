@@ -38,7 +38,7 @@
         // カメラを作成
         const camera = new THREE.PerspectiveCamera(45, width / height);
         // カメラの初期座標を設定
-        camera.position.set(0, 300, 1100);
+        camera.position.set(0, 500, 1100);
 
         // カメラコントローラーを作成
         const controls = new THREE.OrbitControls(camera, document.body);
@@ -72,15 +72,7 @@
          light4.position.set(0,-100,0);
          scene.add(light4);
             
-         var light5=new THREE.SpotLight(0xffffff,2,1000,Math.PI/2,10,0.2);
-         light5.position.set(500,0,0);
-         scene.add(light5);
-            
-         var light6=new THREE.SpotLight(0xffffff,2,1000,Math.PI/2,10,0.2);
-         light6.position.set(-500,0,0);
-         scene.add(light6);
-
-        // テクスチャー読み込み
+         // テクスチャー読み込み
         var textureLoader = new THREE.TextureLoader();  
         var texture = textureLoader.load("earth1.jpg");
         var mat = new THREE.MeshPhongMaterial();
@@ -306,7 +298,8 @@
 
         function update() {
             // グループを回す
-          group.rotateY(0.0007);
+          //group.rotateY(0.0007);
+          group.rotation.y +=0.0007;
           earth.rotation.y += 0.0005; // 地球を回転させる
           sphere2.rotation.y += 0.001; // 太陽を回転させる
           mercury.rotation.y += 0.005; // 水星を回転させる
